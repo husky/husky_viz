@@ -1,7 +1,11 @@
 <?xml version="1.0"?>
 <launch>
   <!-- Standalone launcher to visualize the robot model. -->
-  <include file="$(find husky_description)/launch/description.launch"/>
+  <arg name="ur5_enabled" default="false"/>
+
+  <include file="$(find husky_description)/launch/description.launch">
+      <arg name="ur5_enabled" value="$(arg ur5_enabled)"/>
+  </include>
   
   <node name="joint_state_publisher" pkg="joint_state_publisher" type="joint_state_publisher">
     <param name="use_gui" value="true" />
